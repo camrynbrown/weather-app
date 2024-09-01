@@ -10,14 +10,14 @@ This is a simple Weather App built by following a tutorial on YouTube. The app f
 
 ## Demo
 
-You can see a live demo of the app [here](#). *(Replace `#` with your demo link if available)*
+You can see a live demo of the app [here](#).
 
 ## Technologies Used
 
 - HTML
 - CSS
 - JavaScript
-- [Weather API Name] *(Replace with the actual API used)*
+- Open Weather Map API 
 
 ## Setup
 
@@ -40,7 +40,7 @@ You can see a live demo of the app [here](#). *(Replace `#` with your demo link 
 3. The weather information will be displayed, including temperature, weather conditions, and an icon.
 
 ## API Reference
-This app uses the --- to fetch weather data. You can sign up for an API key at --- Website. 
+This app uses the Open Weather App API to fetch weather data. You can sign up for an API key on the [website](https://api.openweathermap.org/data/2.5/weather?q=orlando&appid=997e4b3212f09748e142792819230fbd&units=imperial). 
 
 ## Credits 
 - Tutorial by `GreatStack` on YouTube.
