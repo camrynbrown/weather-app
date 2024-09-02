@@ -67,6 +67,7 @@ searchBtn.addEventListener("click", ()=> {
 })
 
 mearsurement.addEventListener("click", ()=> {
+    console.log("Temperature clicked");
     isMetric = !isMetric;
     checkWeather(searchBox.value, isMetric);
 })
