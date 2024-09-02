@@ -6,9 +6,16 @@ const celsius = "°C";
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
+const mearsurement = document.querySelector(".temp");
+var isMetric = false;
 
-async function checkWeather(city) {
-    const response = await fetch(apiUrl + city +`&appid=${apiKey}`);
+async function checkWeather(city, boolean) {
+    var response;
+    if (boolean == true) {
+        var response = await fetch(apiUrlMetric + city +`&appid=${apiKey}`);
+    } else {
+        var response = await fetch(apiUrl + city +`&appid=${apiKey}`);
+    }
     if (response.status == 404) {
         document.querySelector(".error").style.cssText = "display: block;";
         document.querySelector(".weather").style.cssText = "display: none;";
@@ -18,10 +25,19 @@ async function checkWeather(city) {
         console.log(data);
     
         document.querySelector(".city").innerHTML = data.name;
-        document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + fahrenheit;
+        if (boolean == true) {
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + celsius;
+        } else {
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + fahrenheit;
+        }
         document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-        document.querySelector(".wind").innerHTML = data.wind.speed + " mph";
-    
+
+        if (boolean == true) {
+            document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+        } else {
+            document.querySelector(".wind").innerHTML = data.wind.speed + " mph";
+        }
+        
         if (data.weather[0].main == "Rain") {
             weatherIcon.src = "images/rain.png";
         } 
@@ -47,5 +63,10 @@ async function checkWeather(city) {
 }
 
 searchBtn.addEventListener("click", ()=> {
-    checkWeather(searchBox.value);
+    checkWeather(searchBox.value, isMetric);
+})
+
+mearsurement.addEventListener("click", ()=> {
+    isMetric = !isMetric;
+    checkWeather(searchBox.value, isMetric);
 })
